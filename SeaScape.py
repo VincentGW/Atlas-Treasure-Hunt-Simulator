@@ -28,11 +28,20 @@ class Tile:
     def __init__(self, coors):
         self.name = 'Tile ' + str(coors)
         self.sea = (rr(50,55), rr(85,100), rr(195,215))
-        self.color = str(self.name) + ' is blue'
+        self.land = (rr(90,175), rr(100,200), rr(30,45))
         self.locate = coors
-
+        self.ttype = str()
+        self.randint = rr(1, 100)
+        if self.randint < 20:
+            self.ttype = 'Land'
+        else:
+            self.ttype = 'Water'
+        
     def draw(self, a, b):
-        Draw(self.sea, [a*scale, b*scale, 49, 49], 0)
+        if self.ttype == 'Water':
+            Draw(self.sea, [a*scale, b*scale, 49, 49], 0)
+        else:
+            Draw(self.land, [a*scale, b*scale, 49, 49], 0)
 
 class Map:
     def __init__(self, name):
@@ -63,7 +72,9 @@ class Map:
 #Main running functionality
 Display = pg.display.set_mode((x_resolution, y_resolution))
 running = True
-map = Map('Map1').map
+
+map1 = Map('Map1')
+map = map1.map
 x = 5
 y = 5
 
@@ -78,7 +89,8 @@ while running:
             ydraw = ydraw + 1
         xdraw = xdraw + 1
         
-    Draw(red, [x*scale, y*scale, 49, 49], 2)
+    xbm = x
+    ybm = y
     for event in pg.event.get():
         if event.type == pg.QUIT:
             running = False
@@ -91,7 +103,13 @@ while running:
                 y = y-1
             if event.key == pg.K_DOWN:
                 y = y+1
-    coords = [x+1, y+1]
+    
+    if map[x][y].ttype == 'Land':
+        x = xbm
+        y = ybm
+    
+    coords = [x,y]
+    Draw(red, [coords[0]*scale, coords[1]*scale, 49, 49], 2)
     coords_text = coords_font.render('coords: '+str(coords), True, white)
     coords_textRect = coords_text.get_rect()
     coords_textRect.center = (x_resolution - 755, y_resolution - 7)
