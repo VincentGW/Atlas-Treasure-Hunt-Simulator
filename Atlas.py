@@ -52,7 +52,6 @@ while running:
                 inventory["Gold"] = inventory["Gold"] - 100
                 inventory["Coral"] = inventory["Coral"] - 10
                 landwalk = True
-                print('Landwalk = ', landwalk)
             if selected_tile.hermanos == True:
                 if questkeys[0] < 5:
                     quest = quest + 1
