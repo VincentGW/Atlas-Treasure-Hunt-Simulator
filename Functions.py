@@ -46,7 +46,7 @@ nShadow = 902 #out of 10,000 (lower bound) default 902
 nCoin = 9970 #Out of 10,000 (upper bound) default 9970
 nFish = 9350 #Out of 10,000 (range bound) default 9350
 nSeaweed = 9100 # Out of 10,000 (range bound) default 9100
-nCoral = 910 #Out of 10,000 (lower bound) default 910
+nCoral = 925 #Out of 10,000 (lower bound) default 925
 nBazar = 897 #Out of 900 (upper bound) default 897
 nTree = 1 #Out of 750 (lower bound) default 1
 nHole = 748 #Out of 750 (upper bound) default 748
@@ -188,7 +188,7 @@ class NetherTile:
             self.ttype = 'Water'
             
         if self.ttype == 'Water':
-            if self.randint > 9985:
+            if self.randint > 9990:
                 self.goal = True    
                 
     def draw(self, a, b):
@@ -540,10 +540,10 @@ def bazar(yn, quest):
     Layer_2.fill((0,0,0))
     bazar_header = inv_font.render('~Sandy Bazar~', True, white)
     if quest == 0:
-        if inventory["Gold"] < 49:
-            bazar_text = inv_font.render("For 50 gold, you can have this tool that I found.", True, white)
+        if inventory["Gold"] < 99:
+            bazar_text = inv_font.render("For 100 gold, you can have this tool that I found.", True, white)
         else:
-            bazar_text = inv_font.render("Want to buy this nifty fishing pole for 50 gold? y/n", True, white)
+            bazar_text = inv_font.render("Want to buy this nifty fishing pole for 100 gold? y/n", True, white)
             if yn == 'y':
                 inventory["Fishing Pole"] = 1
                 bazar_text = inv_font.render("Thank you! (Use spacebar to fish)", True, white)
