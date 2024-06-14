@@ -46,7 +46,7 @@ while running:
             counter = 0
             if inventory["Fishing Pole"] == 1 and quest == 0:
                 quest = 1
-                inventory["Gold"] = inventory["Gold"] - 50
+                inventory["Gold"] = inventory["Gold"] - 100
             if inventory["Potion Effects"] == "Active" and quest == 5:
                 quest = 6
                 inventory["Gold"] = inventory["Gold"] - 100
