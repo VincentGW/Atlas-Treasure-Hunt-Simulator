@@ -1,4 +1,4 @@
-Keep Functions.py in the same fold as Atlas.py when you run the game.
+Keep Functions.py in the same folder as Atlas.py when you run the game.
 
 Controls:
 Arrow keys: move cursor
