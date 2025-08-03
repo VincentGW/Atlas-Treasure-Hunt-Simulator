@@ -1,3 +1,5 @@
+First: pip install pygame
+
 Keep Functions.py in the same folder as Atlas.py when you run the game.
 
 Controls:
